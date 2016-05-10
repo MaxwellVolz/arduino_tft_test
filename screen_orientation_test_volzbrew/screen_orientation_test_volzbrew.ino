@@ -53,6 +53,9 @@ float tempf;
 int x = 0;
 int y = 0;
 int count = 0;
+int counter1 = 0;
+int counter2 = 0;
+
 
 void drawOutline()
 {
@@ -113,13 +116,35 @@ void loop()
 {
   int but1, but2, but3, but4, but5, butX, butY, pressed_button;
   boolean default_colors = true;
-  
-  //but1 = myButtons.addButton( 10,  10, 145,  50, "Button 1");
-  //but2 = myButtons.addButton( 165,  10, 145,  50, "Button 2");
+  int butCounter1, butPlus1, butMinus1;
+  int butCounter2, butPlus2, butMinus2;
+  	
+   
+  but1 = myButtons.addButton( 10,  10, 145,  50, "Button 1");
+  but2 = myButtons.addButton( 165,  10, 145,  50, "Button 2");
   //but3 = myButtons.addButton( 10,  70, 300,  50, "Button 3");
   //but4 = myButtons.addButton( 10,  130, 300,  50, "Button 4");
-  butX = myButtons.addButton( 10, 180, 80, 50, "a", BUTTON_SYMBOL);
+  butX = myButtons.addButton( 10, 180, 80, 50, "a");
+
+  // untest section ------------------------------------------------  
+  // incrementer with buttons
+  counter1= 0;
+  butCounter1 = myButtons.addButton( 160, 70, 70, 50, "0");
+  butPlus1 = myButtons.addButton( 10, 70, 70, 50, "+"); 
+  butMinus1 = myButtons.addButton( 80, 70, 70, 50, "-"); 
+
+  //counter2=0;
   
+
+  //butCounter2 = myButtons.addButton( 160, 60, 50, 50, "#");
+  
+  butCounter2 = myButtons.addButton( 160, 120, 50, 50, "0");
+  butPlus2 = myButtons.addButton( 10, 120, 80, 50, "+"); 
+  butMinus2 = myButtons.addButton( 80, 120, 80, 50, "-"); 
+  
+  // untest section ------------------------------------------------
+  
+
   // volzbrew logo geometry
   //geo.drawArc(20,20,60,-40,40,3);
   
@@ -176,30 +201,6 @@ void loop()
     {
       pressed_button = myButtons.checkButtons();
 
-      if (pressed_button==butX)
-      {
-        if (myButtons.buttonEnabled(but4))
-          myButtons.disableButton(but4, true);
-        else
-          myButtons.enableButton(but4, true);
-      }
-      else if (pressed_button==butY)
-      {
-        if (default_colors)
-        {
-          myButtons.setButtonColors(VGA_YELLOW, VGA_RED, VGA_YELLOW, VGA_BLUE, VGA_GRAY);
-          myButtons.relabelButton(butY, "_");
-          myButtons.drawButtons();
-          default_colors=false;
-        }
-        else
-        {
-          myButtons.setButtonColors(VGA_WHITE, VGA_GRAY, VGA_WHITE, VGA_RED, VGA_BLUE);
-          myButtons.relabelButton(butY, "I");
-          myButtons.drawButtons();
-          default_colors=true;
-        }
-      }
       if (pressed_button==but1)
         myGLCD.print("Button 1", 110, 220);
       if (pressed_button==but2)
@@ -210,6 +211,39 @@ void loop()
         myGLCD.print("Button 4", 110, 220);
       if (pressed_button==-1)
         myGLCD.print("None    ", 110, 220);
+      if(pressed_button==butPlus1){
+        ++counter1;
+        char str[15];
+        sprintf(str,"%d",counter1);
+        //myGLCD.print("lame", 110, 220);
+        myButtons.relabelButton(butCounter1, str);
+        myButtons.drawButtons();
+      }
+      if(pressed_button==butMinus1){
+        --counter1;
+        char str[15];
+        sprintf(str,"%d",counter1);
+        //myGLCD.print("lame", 110, 220);
+        myButtons.relabelButton(butCounter1, str);
+        myButtons.drawButtons();
+      }
+      if(pressed_button==butPlus2){
+        ++counter2;
+        char str[15];
+        sprintf(str,"%d",counter2);
+        //myGLCD.print("addition   ", 110, 220);
+        myButtons.relabelButton(butCounter2, str);
+        myButtons.drawButtons();
+      }
+      if(pressed_button==butMinus2){
+        --counter2;
+        char str[15];
+        sprintf(str,"%d",counter2);
+        //myGLCD.print("subtraction    ", 110, 220);
+        myButtons.relabelButton(butCounter2, str);
+        myButtons.drawButtons();
+      }
+
     }
   }
 }
