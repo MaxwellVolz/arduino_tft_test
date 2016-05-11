@@ -114,14 +114,24 @@ void setup()
 
 void loop()
 {
+  // Button Positioning Guide
+  //
+  // addButton( x, y, width, height, text)
+  //
+  // screenWidth: 420
+  // screenHeight: 340
+  // comfortable click height: 50
+  // comfortable click width: 50  
+  
+  
   int but1, but2, but3, but4, but5, butX, butY, pressed_button;
   boolean default_colors = true;
   int butCounter1, butPlus1, butMinus1;
   int butCounter2, butPlus2, butMinus2;
   	
    
-  but1 = myButtons.addButton( 10,  10, 145,  50, "Button 1");
-  but2 = myButtons.addButton( 165,  10, 145,  50, "Button 2");
+  //but1 = myButtons.addButton( 10,  10, 145,  50, "Button 1");
+  //but2 = myButtons.addButton( 165,  10, 145,  50, "Button 2");
   //but3 = myButtons.addButton( 10,  70, 300,  50, "Button 3");
   //but4 = myButtons.addButton( 10,  130, 300,  50, "Button 4");
   butX = myButtons.addButton( 10, 180, 80, 50, "a");
@@ -129,18 +139,18 @@ void loop()
   // untest section ------------------------------------------------  
   // incrementer with buttons
   counter1= 0;
-  butCounter1 = myButtons.addButton( 160, 70, 70, 50, "0");
-  butPlus1 = myButtons.addButton( 10, 70, 70, 50, "+"); 
-  butMinus1 = myButtons.addButton( 80, 70, 70, 50, "-"); 
+  butCounter1 = myButtons.addButton( 200, 10, 50, 50, "0");
+  butPlus1 = myButtons.addButton( 260, 10, 50, 50, "+"); 
+  butMinus1 = myButtons.addButton( 140, 10, 50, 50, "-"); 
 
   //counter2=0;
   
 
   //butCounter2 = myButtons.addButton( 160, 60, 50, 50, "#");
   
-  butCounter2 = myButtons.addButton( 160, 120, 50, 50, "0");
-  butPlus2 = myButtons.addButton( 10, 120, 80, 50, "+"); 
-  butMinus2 = myButtons.addButton( 80, 120, 80, 50, "-"); 
+  //butCounter2 = myButtons.addButton( 160, 120, 50, 50, "0");
+  //butPlus2 = myButtons.addButton( 10, 120, 80, 50, "+"); 
+  //butMinus2 = myButtons.addButton( 80, 120, 80, 50, "-"); 
   
   // untest section ------------------------------------------------
   
@@ -185,7 +195,7 @@ void loop()
     myGLCD.drawLine( x-3, y-1, x-2, y-1);
     myGLCD.drawLine( x, y-1, x+1, y-1);
     //myGLCD.drawLine(x-3, y+1, x+1, y+1);
-    geo.fillTriangle( x-3,y+1,x+1,y+1,x-2,y+3);
+    geo.fillTriangle( x-3,y+1,x+1,y+1,x-1,y+3);
     
     // right face
     myGLCD.drawLine( x+11, y-1, x+12, y-1);
